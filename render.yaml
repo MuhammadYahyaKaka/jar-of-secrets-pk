@@ -1,0 +1,22 @@
+# Jar of Secrets PK — Render deployment (Blueprint)
+# Ek hi service: Public website (/) aur Admin (/admin) dono isi se chalenge.
+# Persistent disk zaroori hai taake orders, products aur screenshots mehfooz rahein.
+services:
+  - type: web
+    name: jar-of-secrets-pk
+    runtime: node
+    plan: starter
+    buildCommand: "echo No build step needed"
+    startCommand: node server.js
+    healthCheckPath: /api/settings/public
+    envVars:
+      - key: TRUST_PROXY
+        value: "1"
+      - key: DATA_DIR
+        value: /var/data/jos/data
+      - key: UPLOADS_DIR
+        value: /var/data/jos/uploads
+    disk:
+      name: jar-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -1,0 +1,7 @@
+node_modules/
+data/store.sqlite*
+data/backups/
+uploads/screenshots/*
+!uploads/screenshots/.gitkeep
+uploads/products/*
+!uploads/products/.gitkeep

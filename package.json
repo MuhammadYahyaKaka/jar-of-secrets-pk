@@ -1,0 +1,16 @@
+{
+  "name": "jar-of-secrets-pk",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Jar of Secrets PK — standalone e-commerce store. Zero npm dependencies: run with node server.js",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/",
+    "backup": "node scripts/backup.js",
+    "admin:reset": "node scripts/reset-admin.js"
+  }
+}
