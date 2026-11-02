@@ -1,0 +1,1268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="jos-api-base" content="" />
+    <link rel="icon" href="data:," />
+    <title>Jar of Secrets PK — Gifts with a Secret Inside</title>
+    <style>
+      :root {
+        --bg: #fdf2f3;
+        --bg2: #fff8f8;
+        --card: #ffffff;
+        --soft: #fce8ea;
+        --pink: #f4b8c1;
+        --pink-deep: #e79aa8;
+        --gold: #a8872a;
+        --gold2: #b9975b;
+        --ink: #3d2b2e;
+        --muted: #7a5e63;
+        --line: #f0d5d9;
+        --goldline: #e3d3ae;
+        --btn: #a8872a;
+        --btnText: #fff;
+        --danger: #b3261e;
+        --dangerBg: #fdecea;
+        --ok: #1e6b3a;
+        --okBg: #e7f4eb;
+        --shadow: 0 10px 30px rgba(168, 135, 42, 0.12);
+        --radius: 18px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #241a1c;
+          --bg2: #2c2023;
+          --card: #33262a;
+          --soft: #3d2b30;
+          --pink: #f4b8c1;
+          --pink-deep: #e79aa8;
+          --gold: #d8b96a;
+          --gold2: #c9a959;
+          --ink: #fdf2f3;
+          --muted: #d8bec2;
+          --line: #4a363c;
+          --goldline: #5a4a2e;
+          --btn: #b9975b;
+          --btnText: #241a1c;
+          --danger: #ffb4ab;
+          --dangerBg: #4a2320;
+          --ok: #9ad6a9;
+          --okBg: #23402c;
+          --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: var(--gold);
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        background: none;
+        border: 0;
+        padding: 0;
+        text-align: left;
+      }
+      .logoBadge {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--pink);
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        border: 1.5px solid var(--goldline);
+      }
+      .brandName {
+        font-weight: 800;
+        font-size: 1.18rem;
+        letter-spacing: 0.2px;
+        line-height: 1.1;
+      }
+      .brandSub {
+        font-size: 0.78rem;
+        color: var(--gold);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .headSpacer {
+        flex: 1;
+      }
+      .navBtn {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 16px;
+        font-weight: 700;
+      }
+      .cartBtn {
+        position: relative;
+        background: var(--gold);
+        color: var(--btnText);
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-weight: 800;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .cartCount {
+        background: #fff;
+        color: #a8872a;
+        border-radius: 999px;
+        min-width: 22px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        font-size: 0.8rem;
+        padding: 0 5px;
+      }
+      /* Hero */
+      .hero {
+        margin: 18px 0 8px;
+        background: linear-gradient(135deg, var(--soft), var(--bg2));
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 30px 22px;
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 20px;
+        align-items: center;
+        overflow: hidden;
+      }
+      .hero h1 {
+        margin: 0 0 10px;
+        font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+        line-height: 1.12;
+        font-weight: 850;
+        letter-spacing: -0.01em;
+      }
+      .hero h1 span {
+        color: var(--gold);
+      }
+      .hero p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        max-width: 52ch;
+      }
+      .heroCtas {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        border-radius: 999px;
+        padding: 12px 22px;
+        font-weight: 800;
+        border: 1px solid transparent;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+      }
+      .btnGold {
+        background: var(--gold);
+        color: var(--btnText);
+      }
+      .btnOutline {
+        background: var(--card);
+        border-color: var(--goldline);
+        color: var(--gold);
+      }
+      .btnPink {
+        background: var(--pink);
+        color: #4a2430;
+        border-color: var(--pink-deep);
+      }
+      .btnBlock {
+        width: 100%;
+      }
+      .btn:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      .heroArt {
+        display: grid;
+        place-items: center;
+      }
+      .heroNote {
+        margin-top: 14px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .pill {
+        font-size: 0.8rem;
+        font-weight: 700;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 12px;
+        color: var(--muted);
+      }
+      /* Toolbar */
+      .toolbar {
+        margin: 20px 0 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .searchBox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 8px 6px 18px;
+      }
+      .searchBox input {
+        flex: 1;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        min-width: 0;
+        padding: 8px 0;
+      }
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        border: 1px solid var(--line);
+        background: var(--card);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-weight: 700;
+      }
+      .chip.active {
+        background: var(--gold);
+        color: var(--btnText);
+        border-color: var(--gold);
+      }
+      /* Grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+        padding: 14px 0 30px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+      }
+      .cardArt {
+        aspect-ratio: 4/3;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(160deg, var(--soft), var(--bg2));
+      }
+      .cardBody {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+      }
+      .catTag {
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .card h3 {
+        margin: 0;
+        font-size: 1.06rem;
+        line-height: 1.3;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        flex: 1;
+      }
+      .priceRow {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+      .price {
+        font-weight: 850;
+        font-size: 1.12rem;
+        color: var(--gold);
+      }
+      .stockNote {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .stockNote.low {
+        color: var(--danger);
+        font-weight: 700;
+      }
+      .cardBtns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .btnSm {
+        padding: 10px 10px;
+        font-size: 0.92rem;
+      }
+      .empty {
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 44px 16px;
+        background: var(--card);
+        border: 1px dashed var(--line);
+        border-radius: var(--radius);
+        color: var(--muted);
+      }
+      /* Sections / views */
+      .view {
+        display: none;
+      }
+      .view.active {
+        display: block;
+      }
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+      .backBtn {
+        background: none;
+        border: 0;
+        color: var(--gold);
+        font-weight: 800;
+        padding: 8px 0;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+      }
+      /* Detail */
+      .detailGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      .detailArt {
+        border-radius: var(--radius);
+        background: linear-gradient(160deg, var(--soft), var(--bg2));
+        border: 1px solid var(--line);
+        min-height: 320px;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+      .thumbs {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .thumb {
+        width: 64px;
+        height: 54px;
+        border-radius: 12px;
+        border: 2px solid var(--line);
+        background: var(--soft);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+      .thumb.active {
+        border-color: var(--gold);
+      }
+      .thumb svg {
+        width: 34px !important;
+        height: auto !important;
+      }
+      .thumb div {
+        display: none;
+      }
+      .cartThumb svg {
+        width: 48px !important;
+        height: auto !important;
+      }
+      .cartThumb div {
+        display: none;
+      }
+      .cardArt svg {
+        max-height: 150px;
+        width: auto;
+      }
+      .specTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+      }
+      .specTable td {
+        padding: 9px 4px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      .specTable td:first-child {
+        font-weight: 700;
+        width: 42%;
+        color: var(--muted);
+      }
+      .qtyRow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 16px 0;
+      }
+      .qtyCtrl {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        overflow: hidden;
+        background: var(--bg2);
+      }
+      .qtyCtrl button {
+        width: 42px;
+        height: 42px;
+        border: 0;
+        background: transparent;
+        font-size: 1.15rem;
+        font-weight: 800;
+      }
+      .qtyCtrl span {
+        min-width: 34px;
+        text-align: center;
+        font-weight: 800;
+      }
+      .detailBtns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      /* Cart */
+      .cartLayout {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 18px;
+        align-items: start;
+        padding-bottom: 30px;
+      }
+      .cartItem {
+        display: flex;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .cartItem:last-child {
+        border-bottom: 0;
+      }
+      .cartThumb {
+        width: 84px;
+        height: 74px;
+        border-radius: 12px;
+        background: var(--soft);
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+      .cartMeta {
+        flex: 1;
+        min-width: 0;
+      }
+      .cartMeta h4 {
+        margin: 0 0 2px;
+        font-size: 1rem;
+      }
+      .removeBtn {
+        background: none;
+        border: 0;
+        color: var(--danger);
+        font-weight: 700;
+        padding: 4px 0;
+        font-size: 0.88rem;
+      }
+      .sumRow {
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 0;
+        color: var(--muted);
+      }
+      .sumRow.total {
+        border-top: 1px solid var(--line);
+        margin-top: 8px;
+        padding-top: 12px;
+        color: var(--ink);
+        font-weight: 850;
+        font-size: 1.08rem;
+      }
+      /* Forms */
+      .field {
+        margin-bottom: 14px;
+      }
+      .field label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+        font-size: 0.94rem;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px 14px;
+        background: var(--bg2);
+        outline: 0;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(185, 151, 91, 0.18);
+      }
+      .field .hint {
+        font-size: 0.83rem;
+        color: var(--muted);
+        margin-top: 5px;
+      }
+      .alert {
+        border-radius: 12px;
+        padding: 13px 15px;
+        font-weight: 600;
+        margin: 12px 0;
+        display: none;
+      }
+      .alert.show {
+        display: block;
+      }
+      .alert.err {
+        background: var(--dangerBg);
+        color: var(--danger);
+        border: 1px solid var(--danger);
+      }
+      .alert.ok {
+        background: var(--okBg);
+        color: var(--ok);
+        border: 1px solid var(--ok);
+      }
+      .payOpts {
+        display: grid;
+        gap: 10px;
+        margin: 6px 0 14px;
+      }
+      .payOpt {
+        border: 1.5px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        background: var(--bg2);
+        cursor: pointer;
+      }
+      .payOpt.sel {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(185, 151, 91, 0.15);
+      }
+      .payOpt input {
+        margin-top: 4px;
+        accent-color: var(--gold);
+        width: 18px;
+        height: 18px;
+      }
+      .payOpt b {
+        display: block;
+      }
+      .payOpt span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .bankBox {
+        display: none;
+        background: var(--soft);
+        border: 1px dashed var(--gold2);
+        border-radius: 14px;
+        padding: 14px;
+        margin-bottom: 14px;
+      }
+      .bankBox.show {
+        display: block;
+      }
+      .shotPreview {
+        display: none;
+        margin-top: 10px;
+      }
+      .shotPreview img {
+        max-height: 220px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+      }
+      .shotPreview.show {
+        display: block;
+      }
+      /* Confirmation */
+      .confirmHero {
+        text-align: center;
+        padding: 10px 0 4px;
+      }
+      .confirmBadge {
+        width: 74px;
+        height: 74px;
+        margin: 0 auto 12px;
+        border-radius: 50%;
+        background: var(--okBg);
+        display: grid;
+        place-items: center;
+        border: 1.5px solid var(--ok);
+      }
+      .orderId {
+        font-size: 1.25rem;
+        font-weight: 850;
+        color: var(--gold);
+        letter-spacing: 0.03em;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        margin-top: 10px;
+        padding: 26px 0 40px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .footGrid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 18px;
+      }
+      footer h4 {
+        color: var(--ink);
+        margin: 0 0 8px;
+        font-size: 1rem;
+      }
+      footer p {
+        margin: 0 0 6px;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 22px;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--ink);
+        color: var(--bg);
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 700;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s;
+        z-index: 60;
+        max-width: 92vw;
+        text-align: center;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      @media (max-width: 760px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 24px 18px;
+        }
+        .heroArt {
+          order: -1;
+        }
+        .detailGrid,
+        .cartLayout,
+        .footGrid {
+          grid-template-columns: 1fr;
+        }
+        .brandName {
+          font-size: 1.02rem;
+        }
+        .navBtn {
+          display: none;
+        }
+        .grid {
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+          gap: 12px;
+        }
+        .cardBtns {
+          grid-template-columns: 1fr;
+        }
+        .detailBtns {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Added for the live API: real product photos, spec rows, bank details */
+      .cardArt,
+      .detailArt,
+      .thumb,
+      .cartThumb {
+        position: relative;
+      }
+      .cardArt img,
+      .detailArt img,
+      .thumb img,
+      .cartThumb img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+      }
+      .specTable td[colspan] {
+        font-weight: 400;
+        width: auto;
+        color: inherit;
+      }
+      .bankVal {
+        color: var(--ink);
+        font-weight: 700;
+        text-align: right;
+        overflow-wrap: anywhere;
+        padding-left: 12px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap head">
+        <button
+          class="brand"
+          id="brandHome"
+          aria-label="Jar of Secrets PK — home"
+        >
+          <span class="logoBadge" aria-hidden="true">
+            <svg
+              width="34"
+              height="38"
+              viewBox="0 0 48 54"
+              fill="none"
+              aria-hidden="true"
+            >
+              <ellipse
+                cx="24"
+                cy="8"
+                rx="13"
+                ry="4.5"
+                stroke="#A8872A"
+                stroke-width="2.2"
+              />
+              <path
+                d="M11 10 L13.5 16 H34.5 L37 10"
+                stroke="#A8872A"
+                stroke-width="2.2"
+                fill="none"
+              />
+              <path
+                d="M13.5 16 C11 24 11.5 38 14 46 C15 49.5 18 51 24 51 C30 51 33 49.5 34 46 C36.5 38 37 24 34.5 16"
+                stroke="#A8872A"
+                stroke-width="2.2"
+                fill="none"
+              />
+              <circle cx="24" cy="30" r="3.4" fill="#A8872A" />
+              <path d="M22.6 32.5 L21.4 40 H26.6 L25.4 32.5 Z" fill="#A8872A" />
+              <path
+                d="M5 20 l1.2 2.6 L9 23.8 l-2.8 1.1 L5 27.6 l-1.2-2.7 L1 23.8 l2.8-1.2 Z"
+                fill="#B9975B"
+              />
+              <path
+                d="M40 14 l.9 2 2.1.9-2.1.9-.9 2-.9-2-2.1-.9 2.1-.9Z"
+                fill="#B9975B"
+              />
+            </svg>
+          </span>
+          <span>
+            <span class="brandName">Jar of Secrets PK</span><br />
+            <span class="brandSub">Little jars, big feelings</span>
+          </span>
+        </button>
+        <span class="headSpacer"></span>
+        <button class="navBtn" id="navShop">Shop</button>
+        <button class="cartBtn" id="navCart" aria-label="Open cart">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 4h2l2.4 12.2A2 2 0 0 0 9.4 18h7.9a2 2 0 0 0 2-1.6L20.6 8H6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="10" cy="21" r="1.4" fill="currentColor" />
+            <circle cx="17.5" cy="21" r="1.4" fill="currentColor" />
+          </svg>
+          Cart <span class="cartCount" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <!-- ============ SHOP VIEW ============ -->
+      <section class="view active" id="view-shop">
+        <div class="hero">
+          <div>
+            <h1>
+              Some feelings are too sweet for words —
+              <span>seal them in a jar.</span>
+            </h1>
+            <p>
+              Hand-packed gift jars, hidden-message candles and keepsake boxes
+              made in Karachi. Every order hides a little secret inside — a
+              note, a message, a moment — waiting for someone special to open
+              it.
+            </p>
+            <div class="heroCtas">
+              <button class="btn btnGold" id="heroShopBtn">
+                Browse the Collection
+              </button>
+              <button class="btn btnOutline" id="heroGiftBtn">
+                Shop Gift Boxes
+              </button>
+            </div>
+            <div class="heroNote">
+              <span class="pill">Delivery in <span data-bind="city">Karachi</span> only</span>
+              <span class="pill">Flat <span data-bind="fee">PKR 250</span> delivery</span>
+              <span class="pill">Cash on Delivery available</span>
+            </div>
+          </div>
+          <div class="heroArt" aria-hidden="true">
+            <svg width="210" height="230" viewBox="0 0 48 54" fill="none">
+              <ellipse
+                cx="24"
+                cy="8"
+                rx="13"
+                ry="4.5"
+                stroke="#A8872A"
+                stroke-width="1.6"
+              />
+              <path
+                d="M11 10 L13.5 16 H34.5 L37 10"
+                stroke="#A8872A"
+                stroke-width="1.6"
+              />
+              <path
+                d="M13.5 16 C11 24 11.5 38 14 46 C15 49.5 18 51 24 51 C30 51 33 49.5 34 46 C36.5 38 37 24 34.5 16"
+                stroke="#A8872A"
+                stroke-width="1.6"
+              />
+              <path
+                d="M16 22 C15 30 15.5 39 17 44"
+                stroke="#F4B8C1"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              />
+              <circle cx="24" cy="30" r="3.4" fill="#A8872A" />
+              <path d="M22.6 32.5 L21.4 40 H26.6 L25.4 32.5 Z" fill="#A8872A" />
+              <path
+                d="M5 20 l1.2 2.6 L9 23.8 l-2.8 1.1 L5 27.6 l-1.2-2.7 L1 23.8 l2.8-1.2 Z"
+                fill="#B9975B"
+              />
+              <path
+                d="M41 12 l.9 2 2.1.9-2.1.9-.9 2-.9-2-2.1-.9 2.1-.9Z"
+                fill="#B9975B"
+              />
+              <circle cx="43" cy="26" r="1.1" fill="#B9975B" />
+              <circle cx="4" cy="34" r="1.1" fill="#B9975B" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="toolbar" id="shopAnchor">
+          <div class="searchBox">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" stroke="#A8872A" stroke-width="2" />
+              <path
+                d="M20 20l-3.8-3.8"
+                stroke="#A8872A"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search jars, candles, gift boxes…"
+              aria-label="Search products"
+            />
+          </div>
+          <div
+            class="chips"
+            id="chipRow"
+            role="group"
+            aria-label="Filter by category"
+          ></div>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+      </section>
+
+      <!-- ============ DETAIL VIEW ============ -->
+      <section class="view" id="view-detail">
+        <button class="backBtn" data-go="shop">← Back to shop</button>
+        <div class="panel">
+          <div class="detailGrid">
+            <div>
+              <div class="detailArt" id="detailArt"></div>
+              <div class="thumbs" id="detailThumbs"></div>
+            </div>
+            <div>
+              <span class="catTag" id="dCat"></span>
+              <h2
+                id="dName"
+                style="margin: 6px 0 8px; font-size: 1.6rem; line-height: 1.25"
+              ></h2>
+              <div class="price" id="dPrice" style="font-size: 1.4rem"></div>
+              <p class="stockNote" id="dStock" style="margin: 6px 0 0"></p>
+              <p id="dDesc" style="color: var(--muted); margin: 14px 0 0"></p>
+              <table class="specTable" id="dSpecs"></table>
+              <div class="qtyRow">
+                <span style="font-weight: 700">Quantity</span>
+                <span class="qtyCtrl">
+                  <button id="qtyMinus" aria-label="Decrease quantity">
+                    −
+                  </button>
+                  <span id="qtyVal">1</span>
+                  <button id="qtyPlus" aria-label="Increase quantity">+</button>
+                </span>
+              </div>
+              <div class="detailBtns">
+                <button class="btn btnPink" id="dAdd">Add to Cart</button>
+                <button class="btn btnGold" id="dBuy">Buy Now</button>
+              </div>
+              <p
+                class="hint"
+                style="
+                  color: var(--muted);
+                  font-size: 0.85rem;
+                  margin-top: 12px;
+                "
+              >
+                Delivery within <span data-bind="city">Karachi</span> only · Flat
+                <span data-bind="fee">PKR 250</span> delivery fee ·
+                <span data-bind="payHint">Pay cash on delivery or by bank transfer.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CART VIEW ============ -->
+      <section class="view" id="view-cart">
+        <button class="backBtn" data-go="shop">← Continue shopping</button>
+        <h2 style="margin: 4px 0 14px">Your Cart</h2>
+        <div class="cartLayout">
+          <div class="panel" id="cartItemsPanel"></div>
+          <div class="panel">
+            <h3 style="margin-top: 0">Order Summary</h3>
+            <div class="sumRow">
+              <span>Subtotal</span><span id="sumSub">PKR 0</span>
+            </div>
+            <div class="sumRow">
+              <span>Delivery (<span data-bind="city">Karachi</span>)</span><span data-bind="fee">PKR 250</span>
+            </div>
+            <div class="sumRow total">
+              <span>Total</span><span id="sumTotal">PKR 0</span>
+            </div>
+            <button
+              class="btn btnGold btnBlock"
+              id="goCheckout"
+              style="margin-top: 14px"
+            >
+              Proceed to Checkout
+            </button>
+            <p
+              style="color: var(--muted); font-size: 0.85rem; margin: 12px 0 0"
+            >
+              Your cart is saved in this browser, so it will still be here if
+              you come back later on this device.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CHECKOUT VIEW ============ -->
+      <section class="view" id="view-checkout">
+        <button class="backBtn" data-go="cart">← Back to cart</button>
+        <h2 style="margin: 4px 0 14px">Checkout</h2>
+        <div class="cartLayout">
+          <div class="panel">
+            <h3 style="margin-top: 0">Delivery Details</h3>
+            <form id="checkoutForm" novalidate>
+              <div class="field">
+                <label for="fName">Full Name *</label>
+                <input
+                  id="fName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="e.g. Ayesha Khan"
+                />
+              </div>
+              <div class="field">
+                <label for="fMobile">Mobile Number *</label>
+                <input
+                  id="fMobile"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="03XX-XXXXXXX"
+                />
+              </div>
+              <div class="field">
+                <label for="fWhats">WhatsApp Number *</label>
+                <input id="fWhats" type="tel" placeholder="03XX-XXXXXXX" />
+                <div class="hint">
+                  Our team will contact you on this number to confirm your
+                  order.
+                </div>
+              </div>
+              <div class="field">
+                <label for="fEmail">Email *</label>
+                <input
+                  id="fEmail"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div class="field">
+                <label for="fAddress">Complete Delivery Address *</label>
+                <textarea
+                  id="fAddress"
+                  rows="3"
+                  placeholder="House / flat, street, block, area, landmark"
+                ></textarea>
+              </div>
+              <div class="field">
+                <label for="fCity">City *</label>
+                <select id="fCity">
+                  <option value="">Select your city</option>
+                </select>
+              </div>
+              <div class="alert err" id="cityAlert" role="alert"></div>
+              <div class="alert err" id="formAlert" role="alert"></div>
+
+              <h3 style="margin: 20px 0 8px">Payment Method</h3>
+              <div class="payOpts">
+                <label class="payOpt sel" id="optCod">
+                  <input type="radio" name="pay" value="cod" checked />
+                  <span
+                    ><b>Cash on Delivery</b
+                    ><span
+                      >Pay in cash when your order arrives at your door.</span
+                    ></span
+                  >
+                </label>
+                <label class="payOpt" id="optBank">
+                  <input type="radio" name="pay" value="bank" />
+                  <span
+                    ><b>Online Bank Transfer</b
+                    ><span
+                      >Transfer the total amount to our bank account and upload
+                      your payment screenshot below.</span
+                    ></span
+                  >
+                </label>
+              </div>
+
+              <div class="bankBox" id="bankBox">
+                <b style="color: var(--gold)" id="bankHowTitle">How bank transfer works</b>
+                <div id="bankDetails"></div>
+                <div class="field" id="shotField" style="margin-bottom: 6px">
+                  <label for="fShot">Upload Payment Screenshot *</label>
+                  <input
+                    id="fShot"
+                    type="file"
+                    accept="image/png,image/jpeg,image/jpg,.pdf"
+                  />
+                  <div class="hint">
+                    JPG, PNG or PDF, up to 5 MB. Stored securely for our team to
+                    verify your payment.
+                  </div>
+                  <div class="shotPreview" id="shotPreview">
+                    <img
+                      id="shotImg"
+                      alt="Your uploaded payment screenshot preview"
+                    />
+                  </div>
+                  <div class="hint" id="shotName"></div>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btnGold btnBlock"
+                id="placeOrderBtn"
+              >
+                Place Order
+              </button>
+            </form>
+          </div>
+          <div class="panel">
+            <h3 style="margin-top: 0">Your Order</h3>
+            <div id="checkoutItems"></div>
+            <div class="sumRow">
+              <span>Subtotal</span><span id="coSub">PKR 0</span>
+            </div>
+            <div class="sumRow">
+              <span>Delivery (<span data-bind="city">Karachi</span>)</span><span data-bind="fee">PKR 250</span>
+            </div>
+            <div class="sumRow total">
+              <span>Total</span><span id="coTotal">PKR 0</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONFIRMATION VIEW ============ -->
+      <section class="view" id="view-confirm">
+        <div class="panel">
+          <div class="confirmHero">
+            <div class="confirmBadge" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12.5l5 5L20 6.5"
+                  stroke="#1E6B3A"
+                  stroke-width="2.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h2 style="margin: 0 0 6px">
+              Thank you for your order! Your order has been successfully
+              received. Our team will contact you shortly.
+            </h2>
+            <p style="color: var(--muted); margin: 0">Your Order ID is</p>
+            <div class="orderId" id="confOrderId"></div>
+          </div>
+          <div
+            class="alert ok show"
+            id="confPayNote"
+            style="display: none"
+          ></div>
+          <div id="confDetails" style="margin-top: 10px"></div>
+          <button
+            class="btn btnGold btnBlock"
+            data-go="shop"
+            style="margin-top: 16px"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footGrid">
+        <div>
+          <h4>Jar of Secrets PK</h4>
+          <p>
+            Thoughtful little gifts with a secret inside — hand-packed with love
+            in Karachi, Pakistan.
+          </p>
+        </div>
+        <div>
+          <h4>Good to know</h4>
+          <p>Delivery within <span data-bind="city">Karachi</span> only</p>
+          <p>Flat delivery fee: <span data-bind="fee">PKR 250</span></p>
+          <p data-bind="payFooter">Cash on Delivery &amp; Bank Transfer</p>
+        </div>
+        <div>
+          <h4>Ordering help</h4>
+          <p>
+            Add your favourites to the cart, check out with your <span data-bind="city">Karachi</span>
+            address, and our team will contact you on WhatsApp to confirm.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="store.js"></script>
+  </body>
+</html>

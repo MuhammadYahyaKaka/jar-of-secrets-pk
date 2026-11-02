@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Jar of Secrets PK</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="site"><div class="header-in">
+  <a class="logo" href="/admin"><span class="logo-badge">🫙</span> Jar of Secrets PK — Admin</a>
+  <nav class="main"><a href="/">View Store</a><button class="btn small secondary" id="logoutBtn" style="display:none">Logout</button></nav>
+</div></header>
+
+<main class="wrap">
+  <!-- AUTH -->
+  <section id="authView">
+    <div class="panel" style="max-width:460px;margin:2rem auto">
+      <div id="setupBox" style="display:none">
+        <h2>Create your Admin account</h2>
+        <p class="muted small">One-time setup — this form disappears permanently once your owner account is created. No default password exists.</p>
+        <form id="setupForm">
+          <div class="field"><label>Username</label><input required name="username" autocomplete="username"></div>
+          <div class="field"><label>Password (8+ characters)</label><input required type="password" name="password" autocomplete="new-password" minlength="8"></div>
+          <div class="field"><label>Setup code (printed in the server console)</label><input required name="setupCode" autocomplete="off" spellcheck="false"></div>
+          <div id="setupError"></div>
+          <button class="btn" style="width:100%">Create Admin Account</button>
+        </form>
+      </div>
+      <div id="loginBox" style="display:none">
+        <h2>Admin Login</h2>
+        <form id="loginForm">
+          <div class="field"><label>Username</label><input required name="username" autocomplete="username"></div>
+          <div class="field"><label>Password</label><input required type="password" name="password" autocomplete="current-password"></div>
+          <div id="loginError"></div>
+          <button class="btn" style="width:100%">Login</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashView" style="display:none">
+    <div class="live-row"><span class="live" id="liveStatus" data-state="wait">Connecting…</span></div>
+    <div class="stats" id="statsRow"></div>
+    <div class="tabs">
+      <button class="chip active" data-tab="products">Products</button>
+      <button class="chip" data-tab="orders">Orders<span id="ordersCount"></span></button>
+      <button class="chip" data-tab="customers">Customers</button>
+      <button class="chip" data-tab="settings">Settings</button>
+      <button class="chip" data-tab="notifications">Notifications</button>
+    </div>
+
+    <div id="tab-products">
+      <div class="panel">
+        <h3 id="productFormTitle">Add Product</h3>
+        <form id="productForm">
+          <input type="hidden" name="id">
+          <div class="field"><label>Name *</label><input required name="name"></div>
+          <div class="field"><label>Price (PKR) *</label><input required type="number" name="price" min="1" step="1"></div>
+          <div class="field"><label>Category</label><input name="category" placeholder="e.g. Note Jars"></div>
+          <div class="field"><label>Stock *</label><input required type="number" name="stock" min="0" step="1" value="10"></div>
+          <div class="field"><label>Placeholder artwork (used until photos are uploaded)</label><select name="artKind"><option value="jar">Jar</option><option value="candle">Candle</option><option value="box">Gift Box</option><option value="ring">Keepsake</option></select></div>
+          <div class="field"><label>Short Description</label><input name="shortDescription"></div>
+          <div class="field"><label>Full Description</label><textarea name="description" rows="3"></textarea></div>
+          <div class="field"><label>Specifications</label><textarea name="specifications" rows="3"></textarea><div class="small muted">One per line, e.g. Size: 10 × 8 cm</div></div>
+          <div class="field"><label>Product Photos (up to 4; JPG, PNG or WebP; 5 MB each)</label><input type="file" id="productImages" accept="image/jpeg,image/png,image/webp" multiple><div class="small error-text" id="productImageMsg"></div><div class="img-slots" id="productImagePreview"></div></div>
+          <div class="field"><label style="display:flex;gap:.5rem;align-items:center"><input type="checkbox" name="enabled" checked style="width:auto"> Enabled (visible in store)</label></div>
+          <div id="productFormMsg"></div>
+          <button class="btn" id="saveProductBtn">Save Product</button>
+          <button type="button" class="btn secondary" id="cancelEdit" style="display:none">Cancel Edit</button>
+        </form>
+      </div>
+      <div id="productList"></div>
+    </div>
+
+    <div id="tab-orders" style="display:none">
+      <div class="toolbar">
+        <input type="search" id="orderSearch" placeholder="Search order ID, name, mobile or email" aria-label="Search orders">
+        <select id="orderStatusFilter" aria-label="Filter by order status"><option value="">All order statuses</option></select>
+        <select id="orderPaymentFilter" aria-label="Filter by payment status"><option value="">All payment statuses</option></select>
+        <button type="button" class="btn small secondary" id="orderClearFilters">Clear</button>
+      </div>
+      <div id="orderList"></div>
+    </div>
+
+    <div id="tab-customers" style="display:none">
+      <div class="toolbar">
+        <input type="search" id="customerSearch" placeholder="Search customers" aria-label="Search customers">
+      </div>
+      <div id="customerList"></div>
+    </div>
+
+    <div id="tab-settings" style="display:none">
+      <div class="panel">
+        <h3>Website Settings</h3>
+        <form id="settingsForm">
+          <div class="field"><label>Store Name</label><input name="storeName"></div>
+          <div class="field"><label>Delivery City (only city allowed)</label><input name="deliveryCity"></div>
+          <div class="field"><label>Delivery Fee (PKR)</label><input required type="number" name="deliveryFee" min="0" step="1"></div>
+          <h3>Bank Details (Online Transfer)</h3>
+          <p class="small muted">Customers see these bank details at checkout. Online payment stays hidden from customers until Bank Name, Account Title and Account Number are all set.</p>
+          <div class="field"><label>Bank Name</label><input name="bankName"></div>
+          <div class="field"><label>Account Title</label><input name="bankAccountTitle"></div>
+          <div class="field"><label>Account Number</label><input name="bankAccountNumber"></div>
+          <div class="field"><label>IBAN</label><input name="bankIban"></div>
+          <div class="field"><label>Payment Instructions</label><textarea name="paymentInstructions" rows="2"></textarea></div>
+          <h3>Notifications</h3>
+          <div class="field"><label>Admin WhatsApp Number (with country code, e.g. 92300xxxxxxx)</label><input name="whatsappNumber"></div>
+          <div class="field"><label>WhatsApp Phone Number ID (Meta Cloud API)</label><input name="whatsappPhoneNumberId"></div>
+          <div class="field"><label>WhatsApp API Token (Meta Cloud API)</label><input name="whatsappApiToken" type="password" autocomplete="new-password"><div class="small muted" id="tokenHint" style="display:none">A token is saved — leave blank to keep it</div></div>
+          <div class="field"><label>Gmail / Notification Email</label><input name="notificationEmail" type="email"></div>
+          <div id="settingsMsg"></div>
+          <button class="btn">Save Settings</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="tab-notifications" style="display:none">
+      <div id="notifList"></div>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-label="Order details"><div class="box">
+  <button class="btn secondary small" id="closeModal" style="float:right">Close</button>
+  <div id="orderDetail"></div>
+</div></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/admin.js"></script>
+</body>
+</html>
